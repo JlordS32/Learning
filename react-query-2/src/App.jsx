@@ -42,7 +42,7 @@ function App() {
 		return <h1>Error: {postQuery.error}</h1>;
 	}
 
-	// Comments 1
+	// Comments 2
 
 	return (
 		<div className='app'>
