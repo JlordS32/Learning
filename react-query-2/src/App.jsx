@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 const POSTS = [
 	{
@@ -13,7 +13,7 @@ const POSTS = [
 ];
 
 function App() {
-	const postFn = async () => {};
+	const queryClient = useQueryClient();
 
 	const postQuery = useQuery({
 		queryKey: ['post'],
@@ -28,6 +28,10 @@ function App() {
 					title,
 				})
 			);
+		},
+
+		onSuccess: () => {
+			queryClient.invalidateQueries(['post']);
 		},
 	});
 
@@ -47,6 +51,13 @@ function App() {
 					</div>
 				);
 			})}
+
+			<button
+				disabled={newPostMutation.isLoading}
+				onClick={() => newPostMutation.mutate('New Post')}
+			>
+				{newPostMutation.isLoading ? 'Loading...' : 'Click'}
+			</button>
 		</div>
 	);
 }
