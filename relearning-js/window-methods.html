@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Document</title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			border: 0;
+			box-sizing: border-box;
+			height: 100vh;
+			width: 100vw;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.main-container {
+			display: flex;
+			gap: 100px;
+		}
+
+		button {
+			padding: 20px 40px;
+			font-size: 20px;
+			background-color: black;
+			color: white;
+			border: 0;
+			border-radius: 10px;
+			transition: transform 200ms;
+		}
+
+		button:hover {
+			cursor: pointer;
+			transform: scale(1.05) translateY(-10%);
+		}
+	</style>
+	<body>
+		<div class="main-container">
+			<button
+				type="button"
+				id="prompt"
+			>
+				Prompt
+			</button>
+			<button
+				type="button"
+				id="alert"
+			>
+				Alert
+			</button>
+			<button
+				type="button"
+				id="agree"
+			>
+				Agree
+			</button>
+		</div>
+	</body>
+	<script>
+		const prompt = document.querySelector('#prompt');
+		const alert = document.querySelector('#alert');
+		const agree = document.querySelector('#agree');
+
+		prompt.addEventListener('click', () => {
+			const input = prompt('Type something uwu!: ');
+
+			alert('This is your input!: ', input);
+		});
+
+		alert.addEventListener('click', () => {
+			alert('Hello this is alert!');
+		});
+
+		agree.addEventListener('click', () => {
+			const isTrue = agree('Will you agree your death?');
+
+			if (isTrue) {
+				alert("You've agreed I see... You will die soon...");
+			} else {
+				alert('Good luck living in this wretched world...');
+			}
+		});
+	</script>
+</html>
