@@ -64,24 +64,24 @@
 		</div>
 	</body>
 	<script>
-		const prompt = document.querySelector('#prompt');
-		const alert = document.querySelector('#alert');
-		const agree = document.querySelector('#agree');
+		const promptElem = document.querySelector('#prompt');
+		const alertElem = document.querySelector('#alert');
+		const agreeElem = document.querySelector('#agree');
 
-		prompt.addEventListener('click', () => {
-			const input = prompt('Type something uwu!: ');
+		promptElem.addEventListener('click', () => {
+			const inputThis = prompt('Type something uwu!: ', 'input goes here');
 
-			alert('This is your input!: ', input);
+			alert(`This is your input!: ${inputThis}`);
 		});
 
-		alert.addEventListener('click', () => {
+		alertElem.addEventListener('click', () => {
 			alert('Hello this is alert!');
 		});
 
-		agree.addEventListener('click', () => {
-			const isTrue = agree('Will you agree your death?');
+		agreeElem.addEventListener('click', () => {
+			const agree = confirm('Will you agree your death?');
 
-			if (isTrue) {
+			if (agree) {
 				alert("You've agreed I see... You will die soon...");
 			} else {
 				alert('Good luck living in this wretched world...');
