@@ -12,12 +12,22 @@
 
 // Higher Order Function
 
-const higherOrder = (square, value) => {
-	console.log(`This is the output ${square(value)}`);
-};
-
-const square = (n) => {
-	return n * n;
-};
-
-higherOrder(square, 5);
+const higherOrder = (callback, value) => {
+    const result = callback(value);
+    
+    if (typeof result === 'number') {
+      console.log(`This is the output ${result}`);
+    } else {
+      console.error(`An error occurred: Invalid result`);
+    }
+  };
+  
+  const square = (n) => {
+    if (typeof n !== 'number') {
+      throw new Error('Input must be a number');
+    }
+    return n * n;
+  };
+  
+  higherOrder(square, 5); // Outputs: This is the output 25
+  
