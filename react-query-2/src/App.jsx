@@ -17,11 +17,13 @@ function App() {
 
 	const postQuery = useQuery({
 		queryKey: ['post'],
-		queryFn: () => wait(1000).then(() => [...POSTS]),
+		queryFn: () => wait(seconds(1)).then(() => [...POSTS]),
+		staleTime: seconds(1),
+		refetchInterval: seconds(20),
 	});
 
 	const newPostMutation = useMutation({
-		mutationFn: (title) => {
+		mutationFn: async (title) => {
 			return wait(1000).then(() =>
 				POSTS.push({
 					id: crypto.randomUUID(),
@@ -43,7 +45,7 @@ function App() {
 	}
 
 	// Comments 3
-	
+
 	return (
 		<div className='app'>
 			{postQuery.data.map((data) => {
@@ -62,6 +64,10 @@ function App() {
 			</button>
 		</div>
 	);
+}
+
+function seconds(milliseconds) {
+	return 1000 * milliseconds;
 }
 
 function wait(duration) {

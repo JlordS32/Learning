@@ -1,0 +1,339 @@
+/* Project 1 starter template for Web and Time-Based Design [DESN1021-Pro1#1-739ad15c1d5ee35bb0973f96e6b5095c]. Do not delete this comment */
+
+/* CSS starting template for Project 1
+
+A starting template only - additions and customisation needed - layout, type and colour changes expected.
+
+Colours are intentionally bad to help identify individual structural elements and inspire you to do something much better. Comment existing colours out as you go and/or delete and replace with your own appropriate RGB or Hex codes
+
+Paste your colour scheme values or codes here to have them on hand as you work through your styling.
+
+Colours:
+
+
+––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/*define character set for CSS*/
+
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*Basic browser default resets */
+
+:root {
+	--text: #337da8;
+	--background-color: #fafafa;
+	--heading: #3c95c8;
+	--heading-font: 'Poppins', sans-serif;
+	--text-font: 'DM Sans', sans-serif;
+	font-size: 11pt;
+}
+
+::selection {
+	background-color: var(--text);
+	color: white;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	color: var(--heading);
+}
+
+h2 {
+	color: var(--heading);
+	text-transform: uppercase;
+	font-family: var(--heading-font);
+}
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+- Grid/ Element Layout
+- Base/ global Styles
+- Typography
+- Links/ Navigation
+
+*/
+
+/* Grid/ Element Layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.container {
+	width: 960px;
+	margin: 0 auto; /*centers the container in the browser window */
+
+	overflow: auto; /*defines how the container deals with its content – in this case it ensures the container height as a coloured background will be visible if not covered by other elements */
+	background-color: var(--background-color);
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	width: 960px; /*Notice the width is the same as our container – this is not required for full length elements but it’s a good habit to do it because its required if you want elements to sit next to each other like columns */
+	display: flex;
+	flex-direction: column;
+
+	background-color: var(--background-color);
+	float: left; /*If in doubt - float left - this makes elements stake toward the topleft of a container element - like a game of reverse Tetras */
+}
+
+nav {
+	width: 960px;
+	float: left;
+}
+
+/*pay particular attention to the pixel sizes defined between the section and aside – to form columns
+using 960.gs grid structure we are working with multiples of 80 across the 960 total, with 10px margins.
+Change to suit your layout plan.
+*/
+
+section {
+	/*Depending on the scenario between your background colour arrangements it may be better to use padding instead of margins to set gutter spacing.
+Either way, spacing to be applied to a whole element is better achieved by adding it to the element itself rather than the type content that goes
+inside it. Both approaches will work but be aware of alignment
+conflicts between padding applied to type adding to padding and margins applied to parent elements.*/
+	float: left;
+	font-family: var(--text-font);
+	background-color: var(--background-color);
+	width: 90%;
+	margin: 0 auto;
+}
+
+section h2 {
+	font-weight: 400;
+	letter-spacing: 5px;
+}
+
+footer {
+	width: 100%;
+	background-color: var(--text);
+	color: white;
+}
+
+.experience-subheading {
+	display: flex;
+	justify-content: space-between;
+}
+
+.experience-subheading > p {
+	padding: 0;
+	margin: 0;
+}
+
+.education-article > div {
+	display: flex;
+	justify-content: space-around;
+}
+
+.education-article > div > p:nth-child(1n) {
+	width: 30%;
+	padding: 0;
+	margin: 7.5px 0;
+}
+
+.education-article > div > p:first-child {
+	font-weight: 700;
+}
+
+.programs-skills > ul {
+	height: auto;
+	list-style-type: disc;
+}
+
+.programs-skills > ul > li {
+	display: inline-block;
+	margin-right: 20px;
+	margin-bottom: 15px;
+	padding: 5px 20px;
+	transition: transform 200ms;
+	background-color: var(--text);
+	color: white;
+}
+
+.programs-skills > ul > li:hover {
+	cursor: pointer;
+	transform: scale(1.05);
+	opacity: 0.9;
+}
+
+.reference-wrapper {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 20px;
+}
+
+.reference-wrapper > .reference-item p:first-child {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.seperator {
+	width: 92%;
+	margin: 10px auto;
+	height: auto;
+	display: flex;
+}
+
+.seperator > .square {
+	width: 13px;
+	height: 13px;
+	background-color: var(--text);
+}
+
+.seperator > .dashed-lines {
+	height: 13px;
+	width: 100%;
+	border-bottom: var(--text) 1px dashed;
+	transform: translateY(-50%);
+}
+
+/* Base/ global Styles
+––––––––––––––––––––––––––––––––––––––––––––––––––
+
+Tags/ selectors and their IDs or classes can be targeted or repeated in your CSS –
+repeating the same style attributes is not best practice but repeating selectors to
+break up your organization up is perfectly fine.
+This is why you might see the body and others dealt with more than once.
+
+
+
+
+*/
+body {
+	min-height: 100%;
+	font-size: 12pt;
+	background: white;
+}
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+h1,
+.subhead {
+	font-family: var(--heading-font);
+}
+
+h1 {
+	font-size: 50.7pt;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 13px;
+	padding: 0;
+	margin: 10px 0 0 0;
+}
+
+.subhead {
+	padding: 0;
+	margin: 10px 0 0 0;
+	border: 0;
+	color: black;
+	font-size: 9pt;
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	font-weight: 500;
+	padding-bottom: 15px;
+	border-bottom: var(--text) solid 1px;
+}
+
+.subhead > div:nth-child(1n) {
+	letter-spacing: 1.5px;
+}
+
+header nav div a {
+	text-decoration: none;
+	color: white;
+	font-family: var(--heading-font);
+}
+
+footer {
+	font-size: 9pt;
+	line-height: 12pt;
+	text-align: center;
+	font-weight: 200;
+	padding: 20px 0;
+}
+
+p.subhead {
+	color: #d03df5;
+	font-size: 16pt;
+	padding-left: 150px;
+	padding-right: 10px;
+	text-align: right;
+}
+
+footer {
+	font-family: var(--text-font);
+	text-decoration: none;
+}
+
+/* Links/ navigation
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+header nav {
+	background-color: var(--text);
+	padding: 20px 0;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.navigation-links {
+	display: flex;
+	gap: 30px;
+	font-size: 18px;
+	margin-right: 50px;
+}
+
+.navigation-links a {
+	font-weight: 500;
+	padding: 5px 20px;
+	transition: 300ms;
+}
+
+.navigation-links a:hover {
+	background-color: white;
+	color: var(--text);
+	transform: translateY(-10%);
+}
+
+/*global link treatment */
+
+a {
+	color: #1eaedb;
+}
+
+a:hover {
+	color: #0fa0ce;
+}
+
+/*Main Navigation treatment */
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+nav ul li {
+	float: left; /*change list to show links as a horizontal menu */
+}
+
+nav ul li a {
+	display: block; /*display links as a block of space or colour */
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none; /*remove link underline */
+}
+
+/* Change the link color to #E89EFA on hover */
+nav ul li a:hover {
+	background-color: #e89efa;
+}
+
+/* Project 1 starter template for Web and Time-Based Design [DESN1021-Pro1#1-739ad15c1d5ee35bb0973f96e6b5095c]. Do not delete this comment */
